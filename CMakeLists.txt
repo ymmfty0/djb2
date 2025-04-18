@@ -6,4 +6,5 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s -ffunction-sections -fdata-sections -
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(djb2 main.cpp)
+add_executable(djb2 main.cpp
+        djb2_hasher.h)
