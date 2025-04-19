@@ -3,12 +3,8 @@
 #include <vector>
 #include "djb2_hasher.h"
 
-using hashing::operator""_djb2;
-
 int main( )
 {
-
-
     auto hash_str1 = hashing::djb2::hash( "hello world" );
     std::cout << std::format("Hash string with 1st method : {} (dec), {:#x} (hex)\n", hash_str1 , hash_str1);
 
@@ -27,6 +23,15 @@ int main( )
     unsigned char c_arr[] = {0xCA, 0xFE};
     auto hash_c_arr = hashing::djb2::hash(c_arr);
     std::cout << std::format("Hash c-stle arr: {} (dec), {:#x} (hex)\n", hash_c_arr , hash_c_arr);
+
+    auto w_str1 = hashing::djb2::hash( L"hello world" );
+    std::cout << std::format("Hash wstring with 1st method : {} (dec), {:#x} (hex)\n", w_str1 , w_str1);
+
+    auto w_str2 =  L"hello world"_djb2w;
+    std::cout << std::format("Hash wstring with 2st method : {} (dec), {:#x} (hex)\n", w_str2 , w_str2);
+
+    hashing::djb2 whasher{ L"hello world" };
+    std::cout << std::format("Hash wstring with 3nd method : {} (dec), {:#x} (hex)\n", whasher() , whasher());
 
     static_assert("Test"_djb2 == hashing::djb2::hash(std::string_view{"Test"}));
 
