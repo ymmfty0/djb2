@@ -54,6 +54,11 @@ namespace hashing
             return calculate( std::wstring_view( str ), seed );
         }
 
+        static constexpr hash_type hash( const char *str, hash_type seed = 5381 ) noexcept
+        {
+            return calculate( std::string_view( str ), seed );
+        }
+
     private:
         hash_type _hash;
 
